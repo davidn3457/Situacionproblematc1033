@@ -69,6 +69,46 @@ int main(int argc, const char* argv[]){
         case 7:
           cout << "ingresa el id de la serie: ";
           cin >> iS;
+          cin.ignore();
+
+          if (iS >= 0 && iS <netflix.getCantidadSeries())
+          {
+            s = netflix.getSerie(iS);
+            cout << "La información actual de la serie:\n";
+            s.imprimir();
+            cout << "Ingresa el nuevo titulo <si no quieres cambio da <enter>>:";
+            getline(cin, titulo);
+
+            if (titulo !="")
+              s.setTitulo(titulo);
+            
+            cout << "Ingresa la nueva duracion <si no quieres cabio teclea 0>:";
+            cin >> duracion;
+            cin.ignore();
+
+            if (duracion != 0)
+              s.setDuracion(duracion);
+            
+            cout << "Ingresa el nuevo genero <si no quieres cambio da <enter>>:";
+            getline(cin, genero);
+            if (genero !="")
+              s.setGenero(genero);
+            
+            cout << "La información nueva de la serie es:\n";
+            s.imprimir();
+            netflix.setSerie(iS, s);
+          }
+          else
+            cout << "Esa serie no existe!!\n";
+          break;
+
+
+
+
+            
+
+
+          }
 
           s=netflix.getSerie(iS);
 
